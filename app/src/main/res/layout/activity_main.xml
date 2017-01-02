@@ -13,6 +13,7 @@
         android:id="@+id/billText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="10dp"
         android:text="Bill Amount"
         android:textSize="16sp" />
 
@@ -33,6 +34,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/billTotal"
+        android:layout_marginTop="10dp"
         android:text="Tip"
         android:textSize="16sp" />
 
@@ -42,26 +44,29 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/billTotal"
         android:layout_below="@+id/billTotal"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/tip" />
 
     <TextView
-        android:id="@+id/taxPercent"
+        android:id="@+id/tipPercent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/seekBar"
         android:layout_alignStart="@+id/seekBar"
         android:layout_below="@+id/seekBar"
-        android:text="tax percent"
+        android:paddingRight="10dp"
+        android:text="Tip: 0%"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/taxAmount"
+        android:id="@+id/tipAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/taxPercent"
-        android:layout_toEndOf="@+id/taxPercent"
-        android:layout_toRightOf="@+id/taxPercent"
-        android:text="tax amount"
+        android:layout_alignTop="@+id/tipPercent"
+        android:layout_toEndOf="@+id/tipPercent"
+        android:layout_toRightOf="@+id/tipPercent"
+        android:paddingLeft="10dp"
+        android:text="Total Tip: "
         android:textSize="16sp" />
 
     <TextView
@@ -70,7 +75,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/taxPercent"
+        android:layout_below="@+id/tipPercent"
+        android:layout_marginTop="10dp"
         android:text="People"
         android:textSize="16sp" />
 
@@ -79,7 +85,9 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/taxPercent"
+        android:layout_below="@+id/tipPercent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/peopleText"
         android:layout_toRightOf="@+id/peopleText"
         android:onClick="subtractPerson"
@@ -90,6 +98,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/peopleText"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_toEndOf="@+id/subtractButton"
         android:layout_toRightOf="@+id/subtractButton"
         android:text="1" />
@@ -111,6 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/subtractButton"
+        android:layout_marginTop="10dp"
         android:text="Each Person Pays: "
         android:textSize="16sp" />
 

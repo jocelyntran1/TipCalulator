@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private double billTotal = 0;
-    private double taxPercentage = 0;
+    private double tipPercentage = 0;
     private int numPeople = 1;
 
     @Override
@@ -21,17 +21,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
-        final TextView seekBarValue = (TextView)findViewById(R.id.taxPercent);
-        final TextView taxAmountText = (TextView)findViewById(R.id.taxAmount);
+        final TextView seekBarValue = (TextView)findViewById(R.id.tipPercent);
+        final TextView tipAmountText = (TextView)findViewById(R.id.tipAmount);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
-                taxPercentage = progress;
+                tipPercentage = progress;
                 seekBarValue.setText("Tip Percentage: " + String.valueOf(progress) + "%");
-                taxAmountText.setText("Tax Amount: $" + (double) progress/100*billTotal);
+                tipAmountText.setText("Tip Amount: $" + (double) progress/100*billTotal);
                 updateTotalPayment();
             }
 
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     public void updateTotalPayment() {
         TextView totalPayment = (TextView) findViewById(R.id.totalPayment);
         totalPayment.setText( "Each Person Pays: " +
-                billTotal * ( 1 + (taxPercentage/100) ) / numPeople);
+                billTotal * ( 1 + (tipPercentage/100) ) / numPeople);
     }
 
 }
