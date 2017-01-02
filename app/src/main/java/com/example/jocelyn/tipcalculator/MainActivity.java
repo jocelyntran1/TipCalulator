@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
         final TextView seekBarValue = (TextView)findViewById(R.id.tipPercent);
-        final TextView tipAmountText = (TextView)findViewById(R.id.tipAmount);
+
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -30,9 +30,8 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
                 tipPercentage = progress;
-                seekBarValue.setText("Tip Percentage: " + String.valueOf(progress) + "%");
-                tipAmountText.setText("Tip Amount: $" + (double) progress/100*billTotal);
-                updateTotalPayment();
+                seekBarValue.setText("Tip: " + String.valueOf(progress) + "%");
+                updateTotals();
             }
 
             @Override
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 billTotal = Integer.parseInt( billTotalText.getText().toString() );
-                updateTotalPayment();
+                updateTotals();
             }
         });
 
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         TextView peopleText = (TextView)findViewById(R.id.people);
         numPeople++;
         peopleText.setText( String.valueOf(numPeople) );
-        updateTotalPayment();
+        updateTotals();
     }
 
     public void subtractPerson( View v ) {
@@ -78,12 +77,14 @@ public class MainActivity extends AppCompatActivity {
             numPeople--;
         }
         peopleText.setText( String.valueOf(numPeople) );
-        updateTotalPayment();
+        updateTotals();
     }
 
 
-    public void updateTotalPayment() {
-        TextView totalPayment = (TextView) findViewById(R.id.totalPayment);
+    public void updateTotals() {
+        final TextView totalPayment = (TextView) findViewById(R.id.totalPayment);
+        final TextView tipAmountText = (TextView)findViewById(R.id.tipAmount);
+        tipAmountText.setText("Tip Amount: $" + (double) tipPercentage/100*billTotal);
         totalPayment.setText( "Each Person Pays: " +
                 billTotal * ( 1 + (tipPercentage/100) ) / numPeople);
     }
